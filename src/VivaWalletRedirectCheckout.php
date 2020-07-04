@@ -1,7 +1,7 @@
 <?php
 namespace VgsPedro\VivaWalletRedirectCheckout;
 
-//use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class VivaWalletRedirectCheckout
 {
@@ -19,8 +19,7 @@ class VivaWalletRedirectCheckout
 		$this->client_secret = '13CCNi1UpUYfj49w2nM2gm8e90E62W';
 		$this->merchant_id = 'b329d737-dbb9-4115-8dce-91c89b852bf3';
 		$this->api_key = '.@|!vO';
-        //$this->url = $environment->get("kernel.environment") == 'prod' ? 'https://www.vivapayments.com' : 'https://demo.vivapayments.com';
-		$this->url = 'https://demo.vivapayments.com';
+        $this->url = $environment->get("kernel.environment") == 'prod' ? 'https://www.vivapayments.com' : 'https://demo.vivapayments.com';
 		$this->headers = [];
 		$this->headers[] = 'Authorization: Basic '.base64_encode($this->merchant_id.':'.$this->api_key);
 		$this->headers[] = 'Content-Type: application/json';
