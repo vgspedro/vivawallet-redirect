@@ -80,7 +80,7 @@ class PaymentController extends AbstractController
 #### Create the Templates
 
 # templates/admin/payment/list.html
-
+```html
 <pre>
   <div class="container pt-4 text-center">
     <span>Card Number</span><br>
@@ -90,9 +90,10 @@ class PaymentController extends AbstractController
     <a class="btn btn-info" href="{{ redirect_url.redirect_url }}" target="_blank">Redirect Pay now</a>
   </div>
 </pre>
-
+```
 # templates/admin/payment/success.html
 
+```html
 <pre>
 <div class="content-wrapper">
     <section class="content-header">
@@ -130,9 +131,10 @@ class PaymentController extends AbstractController
     </div>
   </div>
 </pre>
-
+```
 # templates/admin/payment/fail.html
 
+```html
 <pre>
 <div class="content-wrapper">
     <section class="content-header">
@@ -166,7 +168,7 @@ class PaymentController extends AbstractController
     </section>
   </div>
 </pre>
-
+```
 #### Create Routes
 
 # config/routes.yaml
