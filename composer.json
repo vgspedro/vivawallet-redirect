@@ -6,6 +6,7 @@
     "keywords": ["payment", "online", "package"],
     "homepage": "https://masivi.com",
     "license": "MIT",
+    "minimum-stability": "dev",
     "require": {
         "php": ">=7.0"
     },
