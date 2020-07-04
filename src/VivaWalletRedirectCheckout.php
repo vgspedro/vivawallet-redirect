@@ -3,15 +3,15 @@ namespace VgsPedro\VivaWalletRedirectCheckout;
 
 class VivaWalletRedirectCheckout
 {
-	private $test_mode; // Boolean 
- 	private $client_id; // Client ID, Provided by wallet
- 	private $client_secret; // Client Secret, Provided by wallet
-    private $url; // Url to make request, sandbox or live (sandbox APP_ENV=dev or test) (live APP_ENV=prod)
-    private $merchant_id; //Merchant ID , Provided by wallet
-    private $api_key; //Api Key, Provided by wallet
+	private $test_mode; // Boolean
+	private $client_id; // Client ID, Provided by wallet
+	private $client_secret; // Client Secret, Provided by wallet
+	private $url; // Url to make request, sandbox or live (sandbox APP_ENV=dev or test) (live APP_ENV=prod)
+	private $merchant_id; //Merchant ID , Provided by wallet
+	private $api_key; //Api Key, Provided by wallet
 	private $headers; //Set the authorization to curl
 
-    public function __construct(ParameterBagInterface $environment){
+    public function __construct(){
 		$this->test_mode = false;
  		$this->client_id = '344whr50vw7hyxybr2fpwrmifsczt60j3hni4yww90ow8.apps.vivapayments.com';
 		$this->client_secret = '13CCNi1UpUYfj49w2nM2gm8e90E62W';
