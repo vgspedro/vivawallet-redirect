@@ -29,9 +29,9 @@ class PaymentController extends AbstractController
         $viva = new VivaWalletRedirectCheckout();
 
         $p_o = [
-            'client_email' => 'vgspedro@gmail.com',
+            'client_email' => 'client@email.com',
             'client_phone' => '+351963963963',
-            'client_fullname' => 'Pedro Viegas',
+            'client_fullname' => 'Client Name',
             'payment_timeout' => 86400, // Limit the payment period
             'invoice_lang' => 'pt-PT', // The invoice lang that the client sees
             'max_installments' => 0,
