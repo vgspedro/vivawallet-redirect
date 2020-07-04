@@ -126,7 +126,7 @@ class VivaWalletRedirectCheckout
 
 		return [
 	  		'status' => 1,
-	        'data' => $e;//$result
+	        'data' => $e//$result
 	    ];
 
 	}
