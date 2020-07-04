@@ -12,15 +12,15 @@ class VivaWalletRedirectCheckout
 	private $headers; //Set the authorization to curl
 
     public function __construct(){
-		$this->test_mode = false;
- 		$this->client_id = '344whr50vw7hyxybr2fpwrmifsczt60j3hni4yww90ow8.apps.vivapayments.com';
-		$this->client_secret = '13CCNi1UpUYfj49w2nM2gm8e90E62W';
-		$this->merchant_id = 'b329d737-dbb9-4115-8dce-91c89b852bf3';
-		$this->api_key = '.@|!vO';
-        $this->url = 'https://demo.vivapayments.com';
-		$this->headers = [];
-		$this->headers[] = 'Authorization: Basic '.base64_encode($this->merchant_id.':'.$this->api_key);
-		$this->headers[] = 'Content-Type: application/json';
+    	$this->test_mode = false;
+    	$this->client_id = '344whr50vw7hyxybr2fpwrmifsczt60j3hni4yww90ow8.apps.vivapayments.com';
+    	$this->client_secret = '13CCNi1UpUYfj49w2nM2gm8e90E62W';
+    	$this->merchant_id = 'b329d737-dbb9-4115-8dce-91c89b852bf3';
+    	$this->api_key = '.@|!vO';
+    	$this->url = 'https://demo.vivapayments.com';
+    	$this->headers = [];
+    	$this->headers[] = 'Authorization: Basic '.base64_encode($this->merchant_id.':'.$this->api_key);
+    	$this->headers[] = 'Content-Type: application/json';
     }
 
     /**
@@ -101,20 +101,21 @@ class VivaWalletRedirectCheckout
 	 * @return array
 	 */
 	public function getTransaction(string $transaction_id){
-	
+
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
-        curl_setopt($ch, CURLOPT_URL, $this->url.'/api/transactions/'.$id);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+		curl_setopt($ch, CURLOPT_URL, $this->url.'/api/transactions/'.$id);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 
 		if (curl_errno($ch)){
+
 			$err = curl_error($ch);
 			curl_close($ch);
-
 		   	return [
 		   		'status' => 0,
 		   		'data' => $err,
 		   	];
+		
 		}
 
 		$result = curl_exec($ch); 
