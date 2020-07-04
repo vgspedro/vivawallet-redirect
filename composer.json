@@ -1,0 +1,27 @@
+{
+    "name": "vgspedro/vivawalletredirectcheckout",
+    "type": "library",
+    "version": "v1.0",
+    "description": "Redirect Payment Checkout with Viva Wallet",
+    "keywords": ["payment", "online", "package"],
+    "homepage": "https://masivi.com",
+    "license": "MIT",
+    "require": {
+        "php": ">=7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.7"
+    },
+    "autoload": {
+        "classmap": [
+            "src/"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Pedro Viegas",
+            "email": "vgspedro@gmail.com",
+            "role": "Developer"
+        }
+    ]
+}
