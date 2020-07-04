@@ -81,6 +81,7 @@ class PaymentController extends AbstractController
 
 # templates/admin/payment/list.html
 
+<pre>
   <div class="container pt-4 text-center">
     <span>Card Number</span><br>
     <input type="text" size="20" name="txtCardNumber" autocomplete="off" data-vp="cardnumber" value="4111111111111111" />
@@ -88,9 +89,11 @@ class PaymentController extends AbstractController
     <br>
     <a class="btn btn-info" href="{{ redirect_url.redirect_url }}" target="_blank">Redirect Pay now</a>
   </div>
+</pre>
 
 # templates/admin/payment/success.html
 
+<pre>
 <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -105,10 +108,8 @@ class PaymentController extends AbstractController
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-
-    <!-- Main content -->
     <section class="content">
       <div class="error-page">
         <h2 class="headline text-success">Success</h2>
@@ -122,19 +123,17 @@ class PaymentController extends AbstractController
 
         </div>
 
-      </div>
-      <!-- /.error-page -->
-       
+      </div>       
     </section>
     <div class="pt-4 mt-4">
      {{dump(transaction)}}
     </div>
-    <!-- /.content -->
   </div>
-
+</pre>
 
 # templates/admin/payment/fail.html
 
+<pre>
 <div class="content-wrapper">
     <section class="content-header">
       <div class="container-fluid">
@@ -151,10 +150,8 @@ class PaymentController extends AbstractController
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
-
-    <!-- Main content -->
     <section class="content">
       <div class="error-page">
         <h2 class="headline text-danger">{{transaction}}</h2>
@@ -168,7 +165,7 @@ class PaymentController extends AbstractController
       </div>
     </section>
   </div>
-
+</pre>
 
 #### Create Routes
 
@@ -181,5 +178,3 @@ payment:
 payment_status:
     path: /payment-status/{status}
     controller: App\Controller\PaymentController::status
-    #condition: 'request.isXmlHttpRequest()'
-    #methods: [POST]
