@@ -104,7 +104,7 @@ class VivaWalletRedirectCheckout
 
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $this->headers);
-		curl_setopt($ch, CURLOPT_URL, $this->url.'/api/transactions/'.$id);
+		curl_setopt($ch, CURLOPT_URL, $this->url.'/api/transactions/'.$transaction_id);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 
 		if (curl_errno($ch)){
