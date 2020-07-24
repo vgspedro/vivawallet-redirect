@@ -48,7 +48,7 @@ class PaymentController extends AbstractController
     public function index(VivaWalletRedirect $checkout)
     {
 
-        $p_o = [
+        $po = [
             'client_email' => 'client@email.com',
             'client_phone' => '+351963963963',
             'client_fullname' => 'Client Name',
@@ -63,7 +63,7 @@ class PaymentController extends AbstractController
         ];
 
         return $this->render('admin/payment/list.html', [
-            'redirect_url' => $checkout->setPaymentOrderRedirect($p_o),
+            'redirect_url' => $checkout->setPaymentOrderRedirect($po),
             'payment_url' => $this->environment->get("kernel.environment") == 'prod' ? 'https://www.vivapayments.com' : 'https://demo-api.vivapayments.com',
         ]);
     }
@@ -98,6 +98,7 @@ class PaymentController extends AbstractController
 #### Create the Templates
 
 # templates/admin/payment/list.html
+
 ```html
   <div class="container pt-4 text-center">
     <span>Card Number</span><br>
