@@ -29,15 +29,16 @@ class VivaWalletRedirectCheckout
 	 * Set PaymentOrder
 	 * @param array $po PaymentOrder
 	 * @param array $c Credencials
+	 * @param string $url
 	 * @return array
 	 */
-	public function setPaymentOrderRedirect(array $c = [], array $po = []){
+	public function setPaymentOrderRedirect(array $c = [], string $url = null, array $po = []){
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $c['url'].'/api/orders');
+		curl_setopt($ch, CURLOPT_URL, $url.'/api/orders');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_POST, 1);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $c['headers']);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $c);
 		curl_setopt($ch, CURLOPT_POSTFIELDS,
 		'{
 			"Email": "'.$po['client_email'].'",
@@ -71,7 +72,7 @@ class VivaWalletRedirectCheckout
 	  	return [
 	  		'status' => 1,
 	        'data' => $result,
-	        'redirect_url' => $c['url'].'/web/checkout?ref='.$e->OrderCode
+	        'redirect_url' => $url.'/web/checkout?ref='.$e->OrderCode
 	    ];
 	}
 
@@ -82,11 +83,11 @@ class VivaWalletRedirectCheckout
 	 * @param array $c Credencials
 	 * @return array
 	 */
-	public function getTransaction(array $c = [], string $transaction_id = null){
+	public function getTransaction(array $c = [], string $url = null, string $transaction_id = null){
 
 		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_HTTPHEADER, $c['headers']);
-		curl_setopt($ch, CURLOPT_URL, $c['url'].'/api/transactions/'.$transaction_id);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, $c);
+		curl_setopt($ch, CURLOPT_URL, $url.'/api/transactions/'.$transaction_id);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 
 		if (curl_errno($ch)){

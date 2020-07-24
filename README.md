@@ -101,7 +101,7 @@ class PaymentController extends AbstractController
 
 ```html
   <div class="container pt-4 text-center">
-    <span>Card Number</span><br>
+    <span>Card Number</span><br> Just for copy and paste for tye redirect
     <input type="text" size="20" name="txtCardNumber" autocomplete="off" data-vp="cardnumber" value="4111111111111111" />
     <br>
     <br>
@@ -190,28 +190,30 @@ class PaymentController extends AbstractController
 # src/Service/VivaWalletRedirect.php
 
 ```php
+
 namespace App\Service;
 
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-use \VgsPedro\VivaWalletRedirecCheckout\VivaWalletRedirecCheckout;
+use \VgsPedro\VivaWalletRedirectCheckout\VivaWalletRedirectCheckout;
+
 
 class VivaWalletRedirect
 {
 
-  private $client_id; //string required - Client ID, Provided by wallet
-  private $client_secret; // string required - Client Secret, Provided by wallet
-  private $url; //string required - Url to make request, sandbox or live (sandbox APP_ENV=dev or test) (live APP_ENV=prod)
-  private $merchant_id; //string required - Merchant ID , Provided by wallet
-  private $api_key; //string required - Api Key, Provided by wallet
+  private $client_id; // Client ID, Provided by wallet
+  private $client_secret; // Client Secret, Provided by wallet
+  //private $url; // Url to make request, sandbox or live (sandbox APP_ENV=dev or test) (live APP_ENV=prod)
+  private $merchant_id; //Merchant ID , Provided by wallet
+  private $api_key; //Api Key, Provided by wallet
   private $headers; //Set the authorization to curl
 
-    public function __construct(){
+    public function __construct(ParameterBagInterface $environment){
       $this->client_id = '344whr50vw7hyxybr2fpwrmifsczt60j3hni4yww90ow8.apps.vivapayments.com';
       $this->client_secret = '13CCNi1UpUYfj49w2nM2gm8e90E62W';
       $this->merchant_id = 'b329d737-dbb9-4115-8dce-91c89b852bf3';
       $this->api_key = '.@|!vO';
-      $this->url = $environment->get("kernel.environment") == 'prod' ? 'https://www.vivapayments.com' : 'https://demo.vivapayments.com';
       $this->headers = [];
+      $this->url = $environment->get("kernel.environment") == 'prod' ? 'https://www.vivapayments.com' : 'https://demo.vivapayments.com';
       $this->headers[] = 'Authorization: Basic '.base64_encode($this->merchant_id.':'.$this->api_key);
       $this->headers[] = 'Content-Type: application/json';
     }
@@ -223,7 +225,7 @@ class VivaWalletRedirect
    * @return array
    */
   public function setPaymentOrderRedirect(array $po = []){
-    return (new VivaWalletRedirecCheckout())->setPaymentOrderRedirect($this->headers, $po);
+    return (new VivaWalletRedirectCheckout())->setPaymentOrderRedirect($this->headers, $this->url, $po);
   }
 
    /**
@@ -233,7 +235,7 @@ class VivaWalletRedirect
    * @return array
    */
   public function getTransaction(string $transaction_id = null){
-    return (new VivaWalletRedirecCheckout())->getTransaction($this->headers, $transaction_id);
+    return (new VivaWalletRedirectCheckout())->getTransaction($this->headers, $this->url, $transaction_id);
   }
 
 }
