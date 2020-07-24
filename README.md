@@ -48,8 +48,6 @@ class PaymentController extends AbstractController
     public function index(VivaWalletRedirect $checkout)
     {
 
-        $checkoutVivaWalletRedirectCheckout();
-
         $p_o = [
             'client_email' => 'client@email.com',
             'client_phone' => '+351963963963',
